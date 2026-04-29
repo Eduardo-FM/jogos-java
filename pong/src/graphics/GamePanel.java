@@ -1,7 +1,7 @@
 package graphics;
 
 import engine.InputHandler;
-import entities.Player;
+import entities.Ball;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,15 +10,17 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread thread;
     private Boolean running;
-    private Player player;
+    private Ball ball;
     private InputHandler input;
 
     public GamePanel() {
         setFocusable(true);
         input = new InputHandler();
         addKeyListener(input);
+        Integer ballPositionX = 100;
+        Integer ballPositionY = 100;
 
-        player = new Player(100,100);
+        ball = new Ball(ballPositionX, ballPositionY);
         start();
     }
 
@@ -29,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-        player.update(input);
+        ball.update(input);
     }
 
     @Override
@@ -53,6 +55,6 @@ public class GamePanel extends JPanel implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0,0, getWidth(), getHeight());
 
-        player.render(g);
+        ball.render(g);
     }
 }
