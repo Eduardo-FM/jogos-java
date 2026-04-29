@@ -14,7 +14,7 @@ public class Player {
         this.positionY = positionY;
     }
 
-    public void updatee(InputHandler inputHandler){
+    public void update(InputHandler inputHandler){
         if (inputHandler.up){
             positionY -= playerSpeed;
         }
@@ -24,7 +24,7 @@ public class Player {
         if (inputHandler.left){
             positionX -= playerSpeed;
         }
-        if (inputHandler.righ){
+        if (inputHandler.right){
             positionX += playerSpeed;
         }
     }

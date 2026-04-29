@@ -5,8 +5,24 @@ import java.awt.event.KeyListener;
 
 public class InputHandler implements KeyListener {
 
-    public boolean up,down, left, righ;
+    public boolean up,down, left, right;
 
+    private void setKeyState(Integer keyCode, Boolean keyState){
+        switch (keyCode) {
+            case KeyEvent.VK_W:
+                up = keyState;
+                break;
+            case KeyEvent.VK_S:
+                down = keyState;
+                break;
+            case KeyEvent.VK_A:
+                left = keyState;
+                break;
+            case KeyEvent.VK_D:
+                right = keyState;
+                break;
+        }
+    }
     @Override
     public void keyTyped(KeyEvent keyEvent) {
 
@@ -14,37 +30,11 @@ public class InputHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()) {
-            case KeyEvent.VK_W:
-                up = true;
-                break;
-            case KeyEvent.VK_S:
-                down = true;
-                break;
-            case KeyEvent.VK_A:
-                left = true;
-                break;
-            case KeyEvent.VK_D:
-                righ = true;
-                break;
-        }
+        setKeyState(keyEvent.getKeyCode(), true);
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()) {
-            case KeyEvent.VK_W:
-                up = false;
-                break;
-            case KeyEvent.VK_S:
-                down = false;
-                break;
-            case KeyEvent.VK_A:
-                left = false;
-                break;
-            case KeyEvent.VK_D:
-                righ = false;
-                break;
-        }
+        setKeyState(keyEvent.getKeyCode(), false);
     }
 }

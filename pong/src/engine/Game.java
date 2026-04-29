@@ -13,6 +13,5 @@ public class Game {
                 .closeOnExit()
                 .center()
                 .build();
-
     }
 }
