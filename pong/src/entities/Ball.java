@@ -15,7 +15,7 @@ public class Ball {
         this.positionY = positionY;
     }
 
-    public void update(InputHandler inputHandler) {
+    public void update(InputHandler inputHandler, int screenWidth, int screenHeight) {
         if (inputHandler.up) {
             positionY -= ballSpeed;
         }
@@ -28,10 +28,17 @@ public class Ball {
         if (inputHandler.right) {
             positionX += ballSpeed;
         }
+
+        clampPosition(screenWidth, screenHeight);
     }
 
     public void render(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(positionX, positionY, Config.getBallWidth(), Config.getBallHeight());
+    }
+
+    private void clampPosition(int screenWidth, int screenHeight){
+        positionX = Math.max(0, Math.min(positionX, screenWidth - Config.getBallWidth()));
+        positionY = Math.max(0, Math.min(positionY, screenHeight - Config.getBallHeight()));
     }
 }

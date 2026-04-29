@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-        ball.update(input);
+        ball.update(input, getWidth(), getHeight());
     }
 
     @Override
