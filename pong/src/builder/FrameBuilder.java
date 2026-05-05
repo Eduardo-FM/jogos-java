@@ -8,11 +8,14 @@ import java.awt.*;
 public class FrameBuilder {
 
     private JFrame frame;
-    private static final GamePanel panel = new GamePanel();
 
     public FrameBuilder(String title) {
         this.frame = new JFrame(title);
+    }
+
+    public FrameBuilder addPanel(JPanel panel) {
         frame.add(panel);
+        return this;
     }
 
     public FrameBuilder size(int width, int height) {
