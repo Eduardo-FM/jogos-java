@@ -17,8 +17,8 @@ public class GamePanel extends JPanel implements Runnable {
         setFocusable(true);
         input = new InputHandler();
         addKeyListener(input);
-        Integer ballPositionX = 100;
-        Integer ballPositionY = 100;
+        Double ballPositionX = 100.0;
+        Double ballPositionY = 100.0;
 
         ball = new Ball(ballPositionX, ballPositionY);
         start();
@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-        ball.update(input, getWidth(), getHeight());
+        ball.update(getWidth(), getHeight());
     }
 
     @Override
