@@ -37,17 +37,17 @@ public class Ball {
         }
 
         if (positionX + ballWidth >= screenWidth) {
-            positionX = (double) (screenWidth - ballWidth);
+            positionX = (screenWidth - ballWidth);
             angle = Math.PI - angle;
         }
 
         if (positionY <= 0) {
-            positionY = (double) 0;
+            positionY = 0;
             angle = -angle;
         }
 
         if (positionY + ballHeight >= screenHeight) {
-            positionY = (double) (screenHeight - ballHeight);
+            positionY = (screenHeight - ballHeight);
             angle = -angle;
         }
     }

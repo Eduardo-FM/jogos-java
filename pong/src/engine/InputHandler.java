@@ -23,6 +23,7 @@ public class InputHandler implements KeyListener {
                 break;
         }
     }
+
     @Override
     public void keyTyped(KeyEvent keyEvent) {
 
