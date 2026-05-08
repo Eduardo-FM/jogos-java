@@ -15,6 +15,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         setFocusable(true);
+        requestFocusInWindow();
+
         input = new InputHandler();
         addKeyListener(input);
         Double ballPositionX = 100.0;
@@ -32,6 +34,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
         ball.update(getWidth(), getHeight());
+        System.out.println("tick");
+
     }
 
     @Override
@@ -56,5 +60,6 @@ public class GamePanel extends JPanel implements Runnable {
         g.fillRect(0,0, getWidth(), getHeight());
 
         ball.render(g);
+        Toolkit.getDefaultToolkit().sync();
     }
 }
