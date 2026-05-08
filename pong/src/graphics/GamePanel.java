@@ -15,7 +15,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         setFocusable(true);
-        requestFocusInWindow();
 
         input = new InputHandler();
         addKeyListener(input);
@@ -34,8 +33,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
         ball.update(getWidth(), getHeight());
-        System.out.println("tick");
-
     }
 
     @Override
