@@ -9,10 +9,13 @@ public class Ball {
     private double angle;
 
 
-    public Ball(double positionX, double positionY) {
+    public Ball() {
+        this.angle = calAngle();
+    }
+
+    public void setPosition(double positionX, double positionY) {
         this.positionX = positionX;
         this.positionY = positionY;
-        this.angle = calAngle();
     }
 
     public void update(int screenWidth, int screenHeight) {

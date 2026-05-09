@@ -1,5 +1,6 @@
 package graphics;
 
+import config.Config;
 import engine.InputHandler;
 import entities.Ball;
 import entities.Rectangle;
@@ -15,17 +16,17 @@ public class GamePanel extends JPanel implements Runnable {
     private Rectangle player;
     private InputHandler input;
 
+    private boolean initialized = false;
+
     public GamePanel() {
         setFocusable(true);
 
         input = new InputHandler();
         addKeyListener(input);
-        Double ballPositionX = 100.0;
-        Double ballPositionY = 100.0;
         Double playerPositionX = 70.0;
         Double playerPositionY = 100.0;
 
-        ball = new Ball(ballPositionX, ballPositionY);
+        ball = new Ball();
         player = new Rectangle(playerPositionX, playerPositionY);
         start();
     }
@@ -37,6 +38,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
+        if (!initialized && getWidth() > 0 && getHeight() > 0){
+            double positionX = (getWidth() - Config.getBallWidth( )) / 2.0;
+            double positionY = (getHeight() - Config.getBallHeight()) / 2.0;
+
+            ball.setPosition(positionX, positionY);
+            initialized = true;
+        }
+
         ball.update(getWidth(), getHeight());
         player.update(input);
     }
