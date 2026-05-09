@@ -47,4 +47,16 @@ public class Config {
     public static int getBallHeight(){
         return Integer.parseInt(properties.getProperty("ball.height"));
     }
+
+    public static int getRectangleSpeed(){
+        return Integer.parseInt(properties.getProperty("rectangle.speed"));
+    }
+
+    public static int getRectangleHeight(){
+        return Integer.parseInt(properties.getProperty("rectangle.height"));
+    }
+
+    public static int getRectangleWidth(){
+        return Integer.parseInt(properties.getProperty("rectangle.width"));
+    }
 }
