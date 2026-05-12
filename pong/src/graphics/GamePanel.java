@@ -18,13 +18,15 @@ public class GamePanel extends JPanel implements Runnable {
 
     private boolean initialized = false;
 
+    private static double calcPosition(int basePosition, int objectPosition){
+        return (basePosition - objectPosition) / 2.00;
+    }
+
     public GamePanel() {
         setFocusable(true);
 
         input = new InputHandler();
         addKeyListener(input);
-        //Double playerPositionX = 70.0;
-        //Double playerPositionY = 100.0;
 
         ball = new Ball();
         player = new Player();
@@ -39,9 +41,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
         if (!initialized && getWidth() > 0 && getHeight() > 0){
-            double positionX = (getWidth() - Config.getBallWidth( )) / 2.0;
-            double positionY = (getHeight() - Config.getBallHeight()) / 2.0;
-            double playerPositionY = (getHeight() - Config.getPlayerHeight()) / 2.0;
+            double positionX = calcPosition(getWidth(), Config.getBallWidth());
+            double positionY = calcPosition(getHeight(), Config.getBallHeight());
+            double playerPositionY = calcPosition(getHeight(), Config.getPlayerHeight());
             double playerPositionX = Config.getPlayerMargin();
 
             ball.setPosition(positionX, positionY);
