@@ -3,7 +3,7 @@ package graphics;
 import config.Config;
 import engine.InputHandler;
 import entities.Ball;
-import entities.Rectangle;
+import entities.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Thread thread;
     private Boolean running;
     private Ball ball;
-    private Rectangle player;
+    private Player player;
     private InputHandler input;
 
     private boolean initialized = false;
@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
         Double playerPositionY = 100.0;
 
         ball = new Ball();
-        player = new Rectangle(playerPositionX, playerPositionY);
+        player = new Player(playerPositionX, playerPositionY);
         start();
     }
 
@@ -41,13 +41,15 @@ public class GamePanel extends JPanel implements Runnable {
         if (!initialized && getWidth() > 0 && getHeight() > 0){
             double positionX = (getWidth() - Config.getBallWidth( )) / 2.0;
             double positionY = (getHeight() - Config.getBallHeight()) / 2.0;
+            double playerPositionY = (getHeight() - Config.getRectangleHeight()) / 2.0;
 
             ball.setPosition(positionX, positionY);
+            player.setPosition(playerPositionY);
             initialized = true;
         }
 
-        ball.update(getWidth(), getHeight());
-        player.update(input);
+        ball.update(getWidth(), getHeight(), player);
+        player.update(getHeight(), input);
     }
 
     @Override
