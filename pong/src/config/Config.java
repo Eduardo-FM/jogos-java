@@ -49,14 +49,18 @@ public class Config {
     }
 
     public static int getRectangleSpeed(){
-        return Integer.parseInt(properties.getProperty("rectangle.speed"));
+        return Integer.parseInt(properties.getProperty("player.speed"));
     }
 
-    public static int getRectangleHeight(){
-        return Integer.parseInt(properties.getProperty("rectangle.height"));
+    public static int getPlayerHeight(){
+        return Integer.parseInt(properties.getProperty("player.height"));
     }
 
-    public static int getRectangleWidth(){
-        return Integer.parseInt(properties.getProperty("rectangle.width"));
+    public static int getPlayerWidth(){
+        return Integer.parseInt(properties.getProperty("player.width"));
+    }
+
+    public static int getPlayerMargin(){
+        return Integer.parseInt(properties.getProperty("player.margin"));
     }
 }

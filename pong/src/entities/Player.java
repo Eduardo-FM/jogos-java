@@ -9,12 +9,10 @@ public class Player {
 
     private double positionX, positionY;
     private final double speed = Config.getBallSpeed();
-    private final int width = Config.getRectangleWidth();
-    private final int height = Config.getRectangleHeight();
+    private final int width = Config.getPlayerWidth();
+    private final int height = Config.getPlayerHeight();
 
-    public Player(double positionX, double positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+    public Player() {
     }
 
     private void detectedScreeLimits(int screenHeight) {
@@ -29,7 +27,8 @@ public class Player {
         }
     }
 
-    public void setPosition(double positionY) {
+    public void setPosition(double positionX, double positionY) {
+        this.positionX = positionX;
         this.positionY = positionY;
     }
 
